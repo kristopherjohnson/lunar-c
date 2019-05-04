@@ -1,9 +1,6 @@
 // Translation of
 // <http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg>
 // to C.
-//
-// goto labels and functions with names like "_01_20" or "_06_10" refer to lines
-// in the original FOCAL code.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,8 +27,8 @@ static double A, G, I, J, K, L, M, N, S, T, V, W, Z;
 
 static int _echo_input = 0;
 
-static void _06_10();
-static void _09_10();
+static void update_lander_state();
+static void apply_thrust();
 
 static int _accept_double(double *value);
 static int _accept_yes_or_no();
@@ -39,6 +36,9 @@ static void _accept_line(char **buffer, size_t *buffer_length);
 
 int main(int argc, const char **argv)
 {
+    // goto labels with names like "_03_10" or "_08_10" refer to line numbers in
+    // the original FOCAL code.
+
     if (argc > 1)
     {
         // If --echo is present, then write all input back to standard output.
@@ -52,7 +52,7 @@ int main(int argc, const char **argv)
     puts("BETWEEN 8 & 200 LBS/SEC. YOU'VE 16000 LBS FUEL. ESTIMATED");
     puts("FREE FALL IMPACT TIME-120 SECS. CAPSULE WEIGHT-32500 LBS\n\n");
 
-_01_20:
+start_game: // 01.20 in original FOCAL code
     puts("FIRST RADAR CHECK COMING UP\n\n");
     puts("COMMENCE LANDING PROCEDURE");
     puts("TIME,SECS   ALTITUDE,MILES+FEET   VELOCITY,MPH   FUEL,LBS   FUEL RATE");
@@ -65,13 +65,14 @@ _01_20:
     Z = 1.8;
     L = 0;
 
-_02_10:
+start_turn: // 02.10 in original FOCAL code
     printf("%7.0f%16.0f%7.0f%15.2f%12.1f      ",
            L,
            trunc(A),
            5280 * (A - trunc(A)),
            3600 * V,
            M - N);
+
 prompt:
     fputs("K=:", stdout);
     int input = _accept_double(&K);
@@ -87,20 +88,20 @@ prompt:
 
 _03_10:
     if (M - N < .001)
-        goto _04_10;
+        goto fuel_out;
 
     if (T < .001)
-        goto _02_10;
+        goto start_turn;
 
     S = T;
 
     if (N + S * K - M > 0)
         S = (M - N) / K;
 
-    _09_10();
+    apply_thrust();
 
     if (I <= 0)
-        goto _07_10;
+        goto loop_until_on_the_moon;
 
     if (V <= 0)
         goto _03_80;
@@ -109,17 +110,17 @@ _03_10:
         goto _08_10;
 
 _03_80:
-    _06_10();
+    update_lander_state();
 
     goto _03_10;
 
-_04_10:
+fuel_out: // 04.10 in original FOCAL code
     printf("FUEL OUT AT %8.2f SECS\n", L);
     S = (sqrt(V * V + 2 * A * G) - V) / G;
     V += G * S;
     L += S;
 
-_05_10:
+on_the_moon: // 05.10 in original FOCAL code
     printf("ON THE MOON AT %8.2f SECS\n", L);
     W = 3600 * V;
     printf("IMPACT VELOCITY OF %8.2f M.P.H.\n", W);
@@ -142,28 +143,28 @@ _05_10:
 
     puts("\n\n\nTRY AGAIN?");
     if (_accept_yes_or_no())
-        goto _01_20;
+        goto start_game;
     else
     {
         puts("CONTROL OUT\n\n");
         exit(0);
     }
 
-_07_10:
+loop_until_on_the_moon: // 07.10 in original FOCAL code
     if (S < .005)
-        goto _05_10;
+        goto on_the_moon;
     S = 2 * A / (V + sqrt(V * V + 2 * A * (G - Z * K / M)));
-    _09_10();
-    _06_10();
-    goto _07_10;
+    apply_thrust();
+    update_lander_state();
+    goto loop_until_on_the_moon;
 
 _08_10:
     W = (1 - M * G / (Z * K)) / 2;
     S = M * V / (Z * K * (W + sqrt(W * W + V / Z))) + 0.5;
-    _09_10();
+    apply_thrust();
     if (I <= 0)
-        goto _07_10;
-    _06_10();
+        goto loop_until_on_the_moon;
+    update_lander_state();
     if (-J < 0)
         goto _03_10;
     if (V <= 0)
@@ -173,7 +174,8 @@ _08_10:
     return 0;
 }
 
-void _06_10()
+// Subroutine at line 06.10 in original FOCAL code
+void update_lander_state()
 {
     L += S;
     T -= S;
@@ -182,7 +184,8 @@ void _06_10()
     V = J;
 }
 
-void _09_10()
+// Subroutine at line 09.10 in original FOCAL code
+void apply_thrust()
 {
     double Q = S * K / M;
     double Q_2 = pow(Q, 2);
