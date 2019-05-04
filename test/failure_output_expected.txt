@@ -1,0 +1,46 @@
+CONTROL CALLING LUNAR MODULE. MANUAL CONTROL IS NECESSARY
+YOU MAY RESET FUEL RATE K EACH 10 SECS TO 0 OR ANY VALUE
+BETWEEN 8 & 200 LBS/SEC. YOU'VE 16000 LBS FUEL. ESTIMATED
+FREE FALL IMPACT TIME-120 SECS. CAPSULE WEIGHT-32500 LBS
+
+
+FIRST RADAR CHECK COMING UP
+
+
+COMMENCE LANDING PROCEDURE
+TIME,SECS   ALTITUDE,MILES+FEET   VELOCITY,MPH   FUEL,LBS   FUEL RATE
+      0             120      0        3600.00     16000.0      K=:0
+     10             109   5016        3636.00     16000.0      K=:0
+     20              99   4224        3672.00     16000.0      K=:0
+     30              89   2904        3708.00     16000.0      K=:0
+     40              79   1056        3744.00     16000.0      K=:0
+     50              68   3960        3780.00     16000.0      K=:0
+     60              58   1056        3816.00     16000.0      K=:0
+     70              47   2904        3852.00     16000.0      K=:170
+     80              37   1474        3539.86     14300.0      K=:200
+     90              27   5247        3140.80     12300.0      K=:200
+    100              19   4537        2710.41     10300.0      K=:200
+    110              12   5118        2243.83      8300.0      K=:200
+    120               7   2285        1734.97      6300.0      K=:200
+    130               3   1990        1176.06      4300.0      K=:200
+    140               0   5040         556.96      2300.0      K=:190
+    150               0   1581         -97.44       400.0      K=:0
+    160               0   2746         -61.44       400.0      K=:0
+    170               0   3383         -25.44       400.0      K=:0
+    180               0   3492          10.56       400.0      K=:0
+    190               0   3073          46.56       400.0      K=:0
+    200               0   2126          82.56       400.0      K=:0
+    210               0    652         118.56       400.0      K=:20
+ON THE MOON AT   214.03 SECS
+IMPACT VELOCITY OF   102.11 M.P.H.
+FUEL LEFT:   319.48 LBS
+SORRY,BUT THERE WERE NO SURVIVORS-YOU BLEW IT!
+IN FACT YOU BLASTED A NEW LUNAR CRATER    28.36 FT. DEEP
+
+
+
+TRY AGAIN?
+(ANS. YES OR NO):NO
+CONTROL OUT
+
+
