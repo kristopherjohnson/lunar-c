@@ -16,7 +16,7 @@ The program here is pretty close to what I remember.  One difference is that, on
 This code is based upon these sources:
 
 * [Jim Storer's original lunar landing simulation code in FOCAL][storer]
-* [The code from _BASIC Computer Games_ (1978)][ahl]
+* [David Ahl's port to BASIC in _BASIC Computer Games_ (1978)][ahl]
 
 If you have a UNIX-ish system with development tools installed, you should be able to build the executable and play the game by running this command:
 
@@ -24,7 +24,7 @@ If you have a UNIX-ish system with development tools installed, you should be ab
 make run
 ```
 
-Here is an example:
+Here is an example play session:
 
 ```
 CONTROL CALLING LUNAR MODULE. MANUAL CONTROL IS NECESSARY
