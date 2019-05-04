@@ -160,6 +160,11 @@ loop_until_on_the_moon: // 07.10 in original FOCAL code
     goto loop_until_on_the_moon;
 
 _08_10:
+    // FOCAL-to-C gotcha: In FOCAL, multiplication has a higher precedence than
+    // division.  In C, they have the same precedence and are evaluated
+    // left-to-right.  So the original FOCAL subexpression `M * G / Z * K` can't
+    // be copied as-is into C: `Z * K` has to be parenthesized to get the same
+    // result.
     W = (1 - M * G / (Z * K)) / 2;
     S = M * V / (Z * K * (W + sqrt(W * W + V / Z))) + 0.5;
     apply_thrust();
