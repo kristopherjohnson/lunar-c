@@ -10,6 +10,22 @@
 #include <string.h>
 #include <math.h>
 
+// Global variables
+//
+// A - Altitude (miles)
+// G - Gravity
+// I - Intermediate altitude (miles)
+// J - Intermediate velocity (sec)
+// K - Fuel rate (lbs/sec)
+// L - Elapsed time (sec)
+// M - Total weight (lbs)
+// N - Empty weight (lbs, Note: M - N is remaining fuel weight)
+// S - Time elapsed in current 10-second turn (sec)
+// T - Time remaining in current 10-second turn (sec)
+// V - Downward speed (miles/sec)
+// W - Temporary working variable
+// Z - Thrust per pound of fuel burned
+
 static double A, G, I, J, K, L, M, N, S, T, V, W, Z;
 
 static int _echo_input = 0;
