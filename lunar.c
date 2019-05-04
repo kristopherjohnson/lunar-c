@@ -25,14 +25,15 @@
 
 static double A, G, I, J, K, L, M, N, S, T, V, W, Z;
 
-static int _echo_input = 0;
+static int echo_input = 0;
 
 static void update_lander_state();
 static void apply_thrust();
 
-static int _accept_double(double *value);
-static int _accept_yes_or_no();
-static void _accept_line(char **buffer, size_t *buffer_length);
+// Input routines (substitutes for FOCAL ACCEPT command)
+static int accept_double(double *value);
+static int accept_yes_or_no();
+static void accept_line(char **buffer, size_t *buffer_length);
 
 int main(int argc, const char **argv)
 {
@@ -44,7 +45,7 @@ int main(int argc, const char **argv)
         // If --echo is present, then write all input back to standard output.
         // (This is useful for testing with files as redirected input.)
         if (strcmp(argv[1], "--echo") == 0)
-            _echo_input = 1;
+            echo_input = 1;
     }
 
     puts("CONTROL CALLING LUNAR MODULE. MANUAL CONTROL IS NECESSARY");
@@ -75,7 +76,7 @@ start_turn: // 02.10 in original FOCAL code
 
 prompt:
     fputs("K=:", stdout);
-    int input = _accept_double(&K);
+    int input = accept_double(&K);
     if (input != 1 || K < 0 || ((0 < K) && (K < 8)) || K > 200)
     {
         fputs("NOT POSSIBLE", stdout);
@@ -142,7 +143,7 @@ on_the_moon: // 05.10 in original FOCAL code
     }
 
     puts("\n\n\nTRY AGAIN?");
-    if (_accept_yes_or_no())
+    if (accept_yes_or_no())
         goto start_game;
     else
     {
@@ -202,11 +203,11 @@ void apply_thrust()
 // Returns 1 on success, or 0 if input did not contain a number.
 //
 // Calls exit(-1) on EOF or other failure to read input.
-int _accept_double(double *value)
+int accept_double(double *value)
 {
     char *buffer = NULL;
     size_t buffer_length = 80;
-    _accept_line(&buffer, &buffer_length);
+    accept_line(&buffer, &buffer_length);
     int input = sscanf(buffer, "%lf", value);
     free(buffer);
     return input;
@@ -218,13 +219,13 @@ int _accept_double(double *value)
 // If input starts with none of those characters, prompts again.
 //
 // If unable to read input, calls exit(-1);
-int _accept_yes_or_no()
+int accept_yes_or_no()
 {
 prompt:
     fputs("(ANS. YES OR NO):", stdout);
     char *buffer = NULL;
     size_t buffer_length = 80;
-    _accept_line(&buffer, &buffer_length);
+    accept_line(&buffer, &buffer_length);
 
     if (buffer_length > 0)
     {
@@ -250,7 +251,7 @@ prompt:
 // returned buffer.
 //
 // If unable to read input, calls exit(-1).
-void _accept_line(char **buffer, size_t *buffer_length)
+void accept_line(char **buffer, size_t *buffer_length)
 {
     if (getline(buffer, buffer_length, stdin) == -1)
     {
@@ -258,7 +259,7 @@ void _accept_line(char **buffer, size_t *buffer_length)
         exit(-1);
     }
 
-    if (_echo_input)
+    if (echo_input)
     {
         fputs(*buffer, stdout);
     }
