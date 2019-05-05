@@ -76,8 +76,8 @@ start_turn: // 02.10 in original FOCAL code
 
 prompt:
     fputs("K=:", stdout);
-    int input = accept_double(&K);
-    if (input != 1 || K < 0 || ((0 < K) && (K < 8)) || K > 200)
+    int is_valid_input = accept_double(&K);
+    if (!is_valid_input || K < 0 || ((0 < K) && (K < 8)) || K > 200)
     {
         fputs("NOT POSSIBLE", stdout);
         for (int x = 1; x <= 51; ++x)
@@ -213,9 +213,11 @@ int accept_double(double *value)
     char *buffer = NULL;
     size_t buffer_length = 80;
     accept_line(&buffer, &buffer_length);
-    int input = sscanf(buffer, "%lf", value);
+    int is_valid_input = sscanf(buffer, "%lf", value);
     free(buffer);
-    return input;
+    if (is_valid_input != 1)
+        is_valid_input = 0;
+    return is_valid_input;
 }
 
 // Reads input and returns 1 if it starts with 'Y' or 'y', or returns 0 if it
@@ -226,30 +228,34 @@ int accept_double(double *value)
 // If unable to read input, calls exit(-1);
 int accept_yes_or_no()
 {
-prompt:
-    fputs("(ANS. YES OR NO):", stdout);
-    char *buffer = NULL;
-    size_t buffer_length = 80;
-    accept_line(&buffer, &buffer_length);
-
-    if (buffer_length > 0)
+    int result = -1;
+    do
     {
-        switch (buffer[0])
+        fputs("(ANS. YES OR NO):", stdout);
+        char *buffer = NULL;
+        size_t buffer_length = 80;
+        accept_line(&buffer, &buffer_length);
+
+        if (buffer_length > 0)
         {
-        case 'y':
-        case 'Y':
-            free(buffer);
-            return 1;
-        case 'n':
-        case 'N':
-            free(buffer);
-            return 0;
-        default:
-            break;
+            switch (buffer[0])
+            {
+            case 'y':
+            case 'Y':
+                result = 1;
+                break;
+            case 'n':
+            case 'N':
+                result = 0;
+                break;
+            default:
+                break;
+            }
         }
-    }
-    free(buffer);
-    goto prompt;
+        free(buffer);
+    } while (result < 0);
+
+    return result;
 }
 
 // Reads a line of input.  Caller is responsible for calling free() on the
