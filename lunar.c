@@ -1,6 +1,6 @@
 // Translation of
 // <http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg>
-// to C.
+// by Jim Storer from FOCAL to C.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,9 +37,6 @@ static void accept_line(char **buffer, size_t *buffer_length);
 
 int main(int argc, const char **argv)
 {
-    // goto labels with names like "turn_loop" or "_08_10" refer to line numbers in
-    // the original FOCAL code.
-
     if (argc > 1)
     {
         // If --echo is present, then write all input back to standard output.
@@ -75,7 +72,7 @@ int main(int argc, const char **argv)
                3600 * V,
                M - N);
 
-    prompt:
+    prompt_for_k:
         fputs("K=:", stdout);
         int is_valid_input = accept_double(&K);
         if (!is_valid_input || K < 0 || ((0 < K) && (K < 8)) || K > 200)
@@ -83,7 +80,7 @@ int main(int argc, const char **argv)
             fputs("NOT POSSIBLE", stdout);
             for (int x = 1; x <= 51; ++x)
                 putchar('.');
-            goto prompt;
+            goto prompt_for_k;
         }
 
         T = 10;
@@ -173,6 +170,7 @@ int main(int argc, const char **argv)
     } while (accept_yes_or_no());
 
     puts("CONTROL OUT\n\n");
+
     return 0;
 }
 
@@ -219,7 +217,7 @@ int accept_double(double *value)
 // Reads input and returns 1 if it starts with 'Y' or 'y', or returns 0 if it
 // starts with 'N' or 'n'.
 //
-// If input starts with none of those characters, prompts again.
+// If input starts with none of those characters, prompt_for_ks again.
 //
 // If unable to read input, calls exit(-1);
 int accept_yes_or_no()
