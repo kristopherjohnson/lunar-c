@@ -7,8 +7,13 @@ run: lunar
 	./lunar
 .PHONY: run
 
-test: test_success test_failure
+test: test_success test_failure test_good
 .PHONY: test
+
+test_good: lunar
+	./lunar --echo <test/good_input.txt >good_output.txt
+	$(DIFF) test/good_output_expected.txt good_output.txt
+.PHONY: test_good
 
 test_success: lunar
 	./lunar --echo <test/success_input.txt >success_output.txt
@@ -24,4 +29,5 @@ clean:
 	- $(RM) lunar
 	- $(RM) success_output.txt
 	- $(RM) failure_output.txt
+	- $(RM) good_output.txt
 .PHONY: clean
