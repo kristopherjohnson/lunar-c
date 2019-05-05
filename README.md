@@ -16,6 +16,7 @@ The program here is pretty close to what I remember.  One difference is that, on
 This code is based upon these sources:
 
 * [Jim Storer's original lunar landing simulation code in FOCAL][storer]
+* [FOCAL Programming Manual][focal]
 * [David Ahl's port to BASIC in _BASIC Computer Games_ (1978)][ahl]
 
 If you have a UNIX-ish system with development tools installed, you should be able to build the executable and play the game by running this command:
@@ -79,4 +80,5 @@ CONTROL OUT
 [lunarlander]: https://en.wikipedia.org/wiki/Lunar_Lander_(video_game_genre)#Text_games
 [c]: https://en.wikipedia.org/wiki/C_(programming_language)
 [storer]: http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg
+[focal]: http://www.bitsavers.org/www.computer.museum.uq.edu.au/pdf/DEC-08-AJAB-D%20PDP-8-I%20FOCAL%20Programming%20Manual.pdf
 [ahl]: https://www.atariarchives.org/basicgames/showpage.php?page=106
