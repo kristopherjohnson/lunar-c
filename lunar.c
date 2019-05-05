@@ -205,7 +205,7 @@ void apply_thrust()
 int accept_double(double *value)
 {
     char *buffer = NULL;
-    size_t buffer_length = 80;
+    size_t buffer_length = 0;
     accept_line(&buffer, &buffer_length);
     int is_valid_input = sscanf(buffer, "%lf", value);
     free(buffer);
@@ -227,7 +227,7 @@ int accept_yes_or_no()
     {
         fputs("(ANS. YES OR NO):", stdout);
         char *buffer = NULL;
-        size_t buffer_length = 80;
+        size_t buffer_length = 0;
         accept_line(&buffer, &buffer_length);
 
         if (buffer_length > 0)
