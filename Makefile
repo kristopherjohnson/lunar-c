@@ -1,4 +1,5 @@
-CFLAGS:=-O3 -lm
+CFLAGS:=-O3
+LDFLAGS:=-lm
 DIFF:=diff
 
 lunar: lunar.c
