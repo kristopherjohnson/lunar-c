@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kristopherjohnson/lunar-c.svg?branch=master)](https://travis-ci.org/kristopherjohnson/lunar-c)
+
 LUNAR for C
 ===========
 
