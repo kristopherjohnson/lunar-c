@@ -217,7 +217,7 @@ int accept_double(double *value)
 // Reads input and returns 1 if it starts with 'Y' or 'y', or returns 0 if it
 // starts with 'N' or 'n'.
 //
-// If input starts with none of those characters, prompt_for_ks again.
+// If input starts with none of those characters, prompt again.
 //
 // If unable to read input, calls exit(-1);
 int accept_yes_or_no()
@@ -246,6 +246,7 @@ int accept_yes_or_no()
                 break;
             }
         }
+
         free(buffer);
     } while (result < 0);
 
