@@ -1,3 +1,8 @@
+# "make" or "make lunar" - build lunar executable
+# "make run"             - build lunar executable and run it
+# "make test"            - build and run unit tests
+# "make clean"           - delete executable and test output files
+
 CFLAGS:=-O3
 LDLIBS:=-lm
 DIFF:=diff
