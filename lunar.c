@@ -12,7 +12,7 @@
 // A - Altitude (miles)
 // G - Gravity
 // I - Intermediate altitude (miles)
-// J - Intermediate velocity (sec)
+// J - Intermediate velocity (miles/sec)
 // K - Fuel rate (lbs/sec)
 // L - Elapsed time (sec)
 // M - Total weight (lbs)
