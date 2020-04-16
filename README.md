@@ -13,7 +13,7 @@ It was simple, primitive even, but I was immediately fascinated with computers. 
 
 So after that I kept bugging my dad to buy me books about programming.  A couple of years later, my parents bought me a computer.  Thanks Mom and Dad!
 
-The program here is pretty close to what I remember.  One difference is that, on crashing, that program announced "IT'S ALL OVER BUT THE SHOUTING", which confused me as a ten-year-old.  I thought the shouting was for joy.
+I did some research, and I found the [original Lunar Lander program by Jim Storer][storerlunarlander], written in the [FOCAL programming language][wpfocal] in 1969.  I've rewritten it in COBOL so that it can be built and run on modern systems.  The program here is pretty close to what I remember.  One difference is that, on crashing, that program announced "IT'S ALL OVER BUT THE SHOUTING", which confused me as a ten-year-old.  I thought the shouting was for joy.
 
 This code is based upon these sources:
 
@@ -81,6 +81,8 @@ CONTROL OUT
 
 [lunarlander]: https://en.wikipedia.org/wiki/Lunar_Lander_(video_game_genre)#Text_games
 [c]: https://en.wikipedia.org/wiki/C_(programming_language)
+[storerlunarlander]: https://www.cs.brandeis.edu/~storer/LunarLander/LunarLander.html
+[wpfocal]: https://en.wikipedia.org/wiki/FOCAL_(programming_language)
 [storer]: http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg
 [focal]: http://www.bitsavers.org/www.computer.museum.uq.edu.au/pdf/DEC-08-AJAB-D%20PDP-8-I%20FOCAL%20Programming%20Manual.pdf
 [ahl]: https://www.atariarchives.org/basicgames/showpage.php?page=106
