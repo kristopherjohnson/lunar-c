@@ -150,15 +150,15 @@ int main(int argc, const char **argv)
         W = 3600 * V;
         printf("IMPACT VELOCITY OF %8.2f M.P.H.\n", W);
         printf("FUEL LEFT: %8.2f LBS\n", M - N);
-        if (W < 1)
+        if (W <= 1)
             puts("PERFECT LANDING !-(LUCKY)");
-        else if (W < 10)
+        else if (W <= 10)
             puts("GOOD LANDING-(COULD BE BETTER)");
-        else if (W < 22)
+        else if (W <= 22)
             puts("CONGRATULATIONS ON A POOR LANDING");
-        else if (W < 40)
+        else if (W <= 40)
             puts("CRAFT DAMAGE. GOOD LUCK");
-        else if (W < 60)
+        else if (W <= 60)
             puts("CRASH LANDING-YOU'VE 5 HRS OXYGEN");
         else
         {
