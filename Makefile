@@ -2,10 +2,19 @@
 # "make run"             - build lunar executable and run it
 # "make test"            - build and run unit tests
 # "make clean"           - delete executable and test output files
+# "make build-docker"    - build oldmankris/lunar Docker image
+# "make run-docker"      - run oldmankris/lunar Docker image
+# "make push-docker"     - push oldmankris/lunar Docker image to docker.io
 
 CFLAGS:=-O3
 LDLIBS:=-lm
 DIFF:=diff
+DOCKER:=docker
+
+DOCKER_NAME:=oldmankris/lunar
+DOCKER_TAG:=latest
+
+DOCKER_BUILD_FLAGS:=--squash --no-cache
 
 lunar: lunar.c
 
@@ -30,6 +39,18 @@ test_failure: lunar
 	./lunar --echo <test/failure_input.txt >failure_output.txt
 	$(DIFF) test/failure_output_expected.txt failure_output.txt
 .PHONY: test_failure
+
+build-docker:
+	$(DOCKER) build $(DOCKER_BUILD_FLAGS) -t $(DOCKER_NAME):$(DOCKER_TAG) .
+.PHONY: build-docker
+
+run-docker:
+	$(DOCKER) run -it --rm $(DOCKER_NAME):$(DOCKER_TAG)
+.PHONY: run-docker
+
+push-docker:
+	$(DOCKER) push $(DOCKER_NAME):$(DOCKER_TAG)
+.PHONY: push-docker
 
 clean:
 	- $(RM) lunar

@@ -27,6 +27,12 @@ If you have a UNIX-ish system with development tools installed, you should be ab
 make run
 ```
 
+If you have [Docker][docker], you can run the executable from an existing Docker image without building it:
+
+```
+docker run -it --rm oldmankris/lunar
+```
+
 Here is an example play session:
 
 ```
@@ -86,3 +92,4 @@ CONTROL OUT
 [storer]: http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg
 [focal]: http://www.bitsavers.org/www.computer.museum.uq.edu.au/pdf/DEC-08-AJAB-D%20PDP-8-I%20FOCAL%20Programming%20Manual.pdf
 [ahl]: https://www.atariarchives.org/basicgames/showpage.php?page=106
+[docker]: https://www.docker.com/
