@@ -259,6 +259,7 @@ int accept_yes_or_no()
 // If unable to read input, calls exit(-1).
 void accept_line(char **buffer, size_t *buffer_length)
 {
+    fflush(stdout);
     if (getline(buffer, buffer_length, stdin) == -1)
     {
         fputs("\nEND OF INPUT\n", stderr);
