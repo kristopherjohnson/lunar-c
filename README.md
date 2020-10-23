@@ -13,7 +13,7 @@ It was simple, primitive even, but I was immediately fascinated with computers. 
 
 So after that I kept bugging my dad to buy me books about programming.  A couple of years later, my parents bought me a computer.  Thanks Mom and Dad!
 
-I did some research, and I found the [original Lunar Lander program by Jim Storer][storerlunarlander], written in the [FOCAL programming language][wpfocal] in 1969.  I've rewritten it in C so that it can be built and run on modern systems.  The program here is pretty close to what I remember.  One difference is that, on crashing, that program announced "IT'S ALL OVER BUT THE SHOUTING", which confused me as a ten-year-old.  I thought the shouting was for joy.
+I did some research, and I found the [original Lunar Lander program by Jim Storer][storerlunarlander], written in the [FOCAL programming language][wpfocal] in 1969.  I've rewritten it in C so that it can be built and run on modern systems.  The program here is pretty close to what I remember.  One difference is that, on crashing into the moon surface, that program announced "IT'S ALL OVER BUT THE SHOUTING", which confused me as a ten-year-old.  I thought the shouting was for joy.
 
 This code is based upon these sources:
 
@@ -25,6 +25,16 @@ If you have a UNIX-ish system with development tools installed, you should be ab
 
 ```
 make run
+```
+
+If you have [CMake][cmake] installed, you can build and run by executing these commands:
+
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+./lunar
 ```
 
 If you have [Docker][docker], you can run the executable from an existing Docker image without building it:
@@ -93,3 +103,4 @@ CONTROL OUT
 [focal]: http://www.bitsavers.org/www.computer.museum.uq.edu.au/pdf/DEC-08-AJAB-D%20PDP-8-I%20FOCAL%20Programming%20Manual.pdf
 [ahl]: https://www.atariarchives.org/basicgames/showpage.php?page=106
 [docker]: https://www.docker.com/
+[cmake]: https://cmake.org

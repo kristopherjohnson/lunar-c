@@ -6,7 +6,7 @@
 # "make run-docker"      - run oldmankris/lunar Docker image
 # "make push-docker"     - push oldmankris/lunar Docker image to docker.io
 
-CFLAGS:=-O3
+CFLAGS:=-O3 -Wall
 LDLIBS:=-lm
 DIFF:=diff
 DOCKER:=docker

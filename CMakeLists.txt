@@ -3,7 +3,7 @@
 # mkdir build
 # cd build
 # cmake ..
-# cmake --build
+# cmake --build .
 # ./lunar
 
 cmake_minimum_required(VERSION 3.0.0)
