@@ -25,6 +25,22 @@ endif()
 add_executable(lunar lunar.c)
 
 
+# Custom targets for building, uploading, and running Docker image
+
+find_program(DOCKER docker)
+
+set(DOCKER_IMAGE "oldmankris/lunar:latest")
+
+add_custom_target(build-docker
+    ${DOCKER} build --squash --nocache -t ${DOCKER_IMAGE})
+
+add_custom_target(run-docker
+    ${DOCKER} run -it --rm ${DOCKER_IMAGE})
+
+add_custom_target(push-docker
+    ${DOCKER} push ${DOCKER_IMAGE})
+
+
 # CTest
 #
 # Run 'ctest' in the build directory to run the tests.
