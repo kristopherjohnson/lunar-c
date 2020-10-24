@@ -24,14 +24,16 @@ endif()
 
 add_executable(lunar lunar.c)
 
+
 # CTest
 #
 # Run 'ctest' in the build directory to run the tests.
+# (After running 'cmake --build .')
 
 set(TEST_DATA_DIR "${PROJECT_SOURCE_DIR}/test")
 
 find_program(DIFF diff)
-find_program(SHELL NAMES bash zsh sh)
+find_program(SHELL NAMES bash zsh ksh ash sh)
 
 add_test(NAME test_good
     COMMAND ${SHELL} -c "$<TARGET_FILE:lunar> --echo < ${TEST_DATA_DIR}/good_input.txt > good_output.txt && ${DIFF} ${TEST_DATA_DIR}/good_output_expected.txt good_output.txt")
@@ -41,6 +43,7 @@ add_test(NAME test_success
 
 add_test(NAME test_failure
     COMMAND ${SHELL} -c "$<TARGET_FILE:lunar> --echo < ${TEST_DATA_DIR}/failure_input.txt > failure_output.txt && ${DIFF} ${TEST_DATA_DIR}/failure_output_expected.txt failure_output.txt")
+
 
 # CPack
 
