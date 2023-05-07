@@ -45,7 +45,7 @@ build-docker:
 .PHONY: build-docker
 
 run-docker:
-	$(DOCKER) run -it --rm $(DOCKER_NAME):$(DOCKER_TAG)
+	$(DOCKER) run -it --init --rm $(DOCKER_NAME):$(DOCKER_TAG)
 .PHONY: run-docker
 
 push-docker:

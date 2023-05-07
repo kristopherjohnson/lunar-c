@@ -40,7 +40,7 @@ cmake --build .
 If you have [Docker][docker], you can run the executable from an existing Docker image without building it:
 
 ```
-docker run -it --rm oldmankris/lunar
+docker run -it --init --rm oldmankris/lunar
 ```
 
 Here is an example play session:

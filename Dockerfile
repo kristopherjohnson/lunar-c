@@ -14,4 +14,4 @@ RUN make lunar
 FROM alpine
 WORKDIR /
 COPY --from=build /lunar-c/lunar /usr/local/bin/lunar
-CMD lunar
+ENTRYPOINT ["/usr/local/bin/lunar"]
