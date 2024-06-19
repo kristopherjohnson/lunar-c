@@ -129,7 +129,7 @@ turn_loop:
                 // copied as-is into C: `Z * K` has to be parenthesized to
                 // get the same result.
                 W = (1 - M * G / (Z * K)) / 2;
-                S = M * V / (Z * K * (W + sqrt(W * W + V / Z))) + 0.5;
+                S = M * V / (Z * K * (W + sqrt(W * W + V / Z))) + 0.05;
                 apply_thrust();
                 if (I <= 0)
                     goto loop_until_on_the_moon;
