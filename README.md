@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/kristopherjohnson/lunar-c.svg?branch=master)](https://travis-ci.org/kristopherjohnson/lunar-c)
-
 LUNAR for C
 ===========
 
@@ -43,7 +41,7 @@ cmake --build .
 
 ## Building and Running with Bazel
 
-If you have [Bazel][bazel] installed, you can build and run by executing these commands:
+If you have [Bazel][bazel] installed, you can build and run by executing this command:
 
 ```
 bazel run :lunar
