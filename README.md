@@ -3,7 +3,7 @@ LUNAR for C
 
 This is a port of a classic text-based ["lunar lander" game][lunarlander] to [C][c].
 
-The first time I saw a computer was when my father took me to an open-house at the IBM headquarters in Atlanta in the late 1970's, when I was around ten years old.  I wasn't impressed with the big sterile glass rooms filled with big blue computers, but there was a room in the basement where a couple of bearded guys asked me to sit down at a terminal and play a game.
+The first time I saw a computer was when my father took me to an open-house at the IBM headquarters in Atlanta in the late 1970's, when I was around ten years old.  I wasn't impressed with the big sterile glass rooms filled with big orange computers, but there was a room in the basement where a couple of bearded guys asked me to sit down at a terminal and play a game.
 
 It was this lunar landing game.  For each ten seconds of game time, it asks how much thrust you want to use, and then it tells you your new altitude, velocity, and remaining fuel.  I crashed, and then I had to get up to let the next kid take a turn.
 
