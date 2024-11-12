@@ -1,7 +1,7 @@
 # To use CMake to build and run lunar, execute these commands:
 #
-# mkdir build
-# cd build
+# mkdir cmake-build
+# cd cmake-build
 # cmake ..
 # cmake --build .
 # ./lunar

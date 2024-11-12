@@ -30,11 +30,17 @@ make run
 If you have [CMake][cmake] installed, you can build and run by executing these commands:
 
 ```
-mkdir build
-cd build
+mkdir cmake-build
+cd cmake-build
 cmake ..
 cmake --build .
 ./lunar
+```
+
+If you have [Bazel][bazel] installed, you can build and run by executing these commands:
+
+```
+bazel run :lunar
 ```
 
 If you have [Docker][docker], you can run the executable from an existing Docker image without building it:
@@ -95,12 +101,13 @@ CONTROL OUT
 
 ```
 
-[lunarlander]: https://en.wikipedia.org/wiki/Lunar_Lander_(video_game_genre)#Text_games
+[ahl]: https://www.atariarchives.org/basicgames/showpage.php?page=106
+[bazel]: https://bazel.build/
 [c]: https://en.wikipedia.org/wiki/C_(programming_language)
+[cmake]: https://cmake.org/
+[docker]: https://www.docker.com/
+[focal]: http://www.bitsavers.org/www.computer.museum.uq.edu.au/pdf/DEC-08-AJAB-D%20PDP-8-I%20FOCAL%20Programming%20Manual.pdf
+[lunarlander]: https://en.wikipedia.org/wiki/Lunar_Lander_(video_game_genre)#Text_games
+[storer]: http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg
 [storerlunarlander]: https://www.cs.brandeis.edu/~storer/LunarLander/LunarLander.html
 [wpfocal]: https://en.wikipedia.org/wiki/FOCAL_(programming_language)
-[storer]: http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg
-[focal]: http://www.bitsavers.org/www.computer.museum.uq.edu.au/pdf/DEC-08-AJAB-D%20PDP-8-I%20FOCAL%20Programming%20Manual.pdf
-[ahl]: https://www.atariarchives.org/basicgames/showpage.php?page=106
-[docker]: https://www.docker.com/
-[cmake]: https://cmake.org
