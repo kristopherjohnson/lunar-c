@@ -21,11 +21,15 @@ This code is based upon these sources:
 * [FOCAL Programming Manual][focal]
 * [David Ahl's port to BASIC in _BASIC Computer Games_ (1978)][ahl]
 
+## Building and Running with Make
+
 If you have a UNIX-ish system with development tools installed, you should be able to build the executable and play the game by running this command:
 
 ```
 make run
 ```
+
+## Building and Running with CMake
 
 If you have [CMake][cmake] installed, you can build and run by executing these commands:
 
@@ -37,17 +41,23 @@ cmake --build .
 ./lunar
 ```
 
+## Building and Running with Bazel
+
 If you have [Bazel][bazel] installed, you can build and run by executing these commands:
 
 ```
 bazel run :lunar
 ```
 
+## Running with Docker
+
 If you have [Docker][docker], you can run the executable from an existing Docker image without building it:
 
 ```
 docker run -it --init --rm oldmankris/lunar
 ```
+
+## Example of Play
 
 Here is an example play session:
 
