@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up make and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make gcc  # Install make and gcc if needed
+
+      - name: Build and test
+        run: make test
+
