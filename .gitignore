@@ -6,3 +6,5 @@ good_output.txt
 bazel-*
 MODULE.bazel.lock
 cmake-build
+.DS_Store
+
