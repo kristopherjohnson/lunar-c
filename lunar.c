@@ -27,13 +27,13 @@ static double A, G, I, J, K, L, M, N, S, T, V, W, Z;
 
 static int echo_input = 0;
 
-static void play_game();
-static void update_lander_state();
-static void apply_thrust();
+static void play_game(void);
+static void update_lander_state(void);
+static void apply_thrust(void);
 
 // Input routines (substitutes for FOCAL ACCEPT command)
 static int accept_double(double *value);
-static int accept_yes_or_no();
+static int accept_yes_or_no(void);
 static void accept_line(char **buffer, size_t *buffer_length);
 
 int main(int argc, const char **argv)
@@ -63,7 +63,7 @@ int main(int argc, const char **argv)
     return 0;
 }
 
-void play_game()
+void play_game(void)
 {
     // 01.20 in original FOCAL code
     puts("FIRST RADAR CHECK COMING UP\n\n");
@@ -88,8 +88,7 @@ start_turn: // 02.10 in original FOCAL code
 
 prompt_for_k:
     fputs("K=:", stdout);
-    int is_valid_input = accept_double(&K);
-    if (!is_valid_input || K < 0 || ((0 < K) && (K < 8)) || K > 200)
+    if (!accept_double(&K) || K < 0 || ((0 < K) && (K < 8)) || K > 200)
     {
         fputs("NOT POSSIBLE", stdout);
         for (int x = 1; x <= 51; ++x)
@@ -182,7 +181,7 @@ on_the_moon: // 05.10 in original FOCAL code
 }
 
 // Subroutine at line 06.10 in original FOCAL code
-void update_lander_state()
+void update_lander_state(void)
 {
     L += S;
     T -= S;
@@ -192,7 +191,7 @@ void update_lander_state()
 }
 
 // Subroutine at line 09.10 in original FOCAL code
-void apply_thrust()
+void apply_thrust(void)
 {
     double Q = S * K / M;
     double Q_2 = pow(Q, 2);
@@ -227,7 +226,7 @@ int accept_double(double *value)
 // If input starts with none of those characters, prompt again.
 //
 // If unable to read input, calls exit(-1);
-int accept_yes_or_no()
+int accept_yes_or_no(void)
 {
     int result = -1;
     do
