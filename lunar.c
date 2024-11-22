@@ -60,7 +60,7 @@ int main(int argc, const char **argv)
 
     puts("CONTROL OUT\n\n");
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void play_game(void)
@@ -207,7 +207,7 @@ void apply_thrust(void)
 //
 // Returns 1 on success, or 0 if input did not contain a number.
 //
-// Calls exit(-1) on EOF or other failure to read input.
+// Calls exit(EXIT_FAILURE) on EOF or other failure to read input.
 int accept_double(double *value)
 {
     char *buffer = NULL;
@@ -225,7 +225,7 @@ int accept_double(double *value)
 //
 // If input starts with none of those characters, prompt again.
 //
-// If unable to read input, calls exit(-1);
+// If unable to read input, calls exit(EXIT_FAILURE);
 int accept_yes_or_no(void)
 {
     int result = -1;
@@ -262,14 +262,14 @@ int accept_yes_or_no(void)
 // Reads a line of input.  Caller is responsible for calling free() on the
 // returned buffer.
 //
-// If unable to read input, calls exit(-1).
+// If unable to read input, calls exit(EXIT_FAILURE).
 void accept_line(char **buffer, size_t *buffer_length)
 {
     fflush(stdout);
     if (getline(buffer, buffer_length, stdin) == -1)
     {
         fputs("\nEND OF INPUT\n", stderr);
-        exit(-1);
+        exit(EXIT_FAILURE);
     }
 
     if (echo_input)
