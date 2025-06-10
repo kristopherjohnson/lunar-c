@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 
 // Global variables
 //
@@ -213,10 +214,23 @@ int accept_double(double *value)
     char *buffer = NULL;
     size_t buffer_length = 0;
     accept_line(&buffer, &buffer_length);
-    int is_valid_input = sscanf(buffer, "%lf", value);
+
+    char *end_ptr;
+    *value = strtod(buffer, &end_ptr);
+
+    // Check if strtod parsed anything
+    int is_valid_input = (end_ptr != buffer);
+
+    // Check if there are any non-whitespace characters after the number
+    while (is_valid_input && *end_ptr != '\0') {
+        if (!isspace(*end_ptr)) {
+            is_valid_input = 0;
+            break;
+        }
+        end_ptr++;
+    }
+
     free(buffer);
-    if (is_valid_input != 1)
-        is_valid_input = 0;
     return is_valid_input;
 }
 
@@ -238,7 +252,13 @@ int accept_yes_or_no(void)
 
         if (buffer_length > 0)
         {
-            switch (buffer[0])
+            // Skip leading whitespace
+            char *ptr = buffer;
+            while (isspace(*ptr)) {
+                ptr++;
+            }
+
+            switch (*ptr)
             {
             case 'y':
             case 'Y':
