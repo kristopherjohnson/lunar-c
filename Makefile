@@ -14,7 +14,7 @@ DOCKER:=docker
 DOCKER_NAME:=oldmankris/lunar
 DOCKER_TAG:=latest
 
-DOCKER_BUILD_FLAGS:=--squash --no-cache
+DOCKER_BUILD_FLAGS:=--no-cache
 
 lunar: lunar.c
 
