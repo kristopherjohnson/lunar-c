@@ -9,6 +9,7 @@ on:
     paths:
       - 'lunar.c'
       - 'Makefile'
+  workflow_dispatch:
 
 jobs:
   test:
