@@ -12,22 +12,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up make and dependencies
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache
+          key: ${{ runner.os }}-build-${{ hashFiles('Makefile') }}
+
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y make gcc  # Install make and gcc if needed
+          sudo apt-get install -y build-essential
 
       - name: Build lunar
         run: make lunar
 
       - name: Run tests
         run: make test
+
 
 
