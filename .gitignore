@@ -7,4 +7,5 @@ bazel-*
 MODULE.bazel.lock
 cmake-build
 .DS_Store
+.claude
 
