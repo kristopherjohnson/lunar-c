@@ -2,11 +2,11 @@
 // <http://www.cs.brandeis.edu/~storer/LunarLander/LunarLander/LunarLanderListing.jpg>
 // by Jim Storer from FOCAL to C.
 
+#include <ctype.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
-#include <ctype.h>
 
 // Global variables
 //
