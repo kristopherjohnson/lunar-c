@@ -64,7 +64,7 @@ int main(int argc, const char **argv)
     return EXIT_SUCCESS;
 }
 
-void play_game(void)
+static void play_game(void)
 {
     // 01.20 in original FOCAL code
     puts("FIRST RADAR CHECK COMING UP\n\n");
@@ -182,7 +182,7 @@ on_the_moon: // 05.10 in original FOCAL code
 }
 
 // Subroutine at line 06.10 in original FOCAL code
-void update_lander_state(void)
+static void update_lander_state(void)
 {
     L += S;
     T -= S;
@@ -192,13 +192,13 @@ void update_lander_state(void)
 }
 
 // Subroutine at line 09.10 in original FOCAL code
-void apply_thrust(void)
+static void apply_thrust(void)
 {
     double Q = S * K / M;
-    double Q_2 = pow(Q, 2);
-    double Q_3 = pow(Q, 3);
-    double Q_4 = pow(Q, 4);
-    double Q_5 = pow(Q, 5);
+    double Q_2 = Q * Q;
+    double Q_3 = Q_2 * Q;
+    double Q_4 = Q_3 * Q;
+    double Q_5 = Q_4 * Q;
 
     J = V + G * S + Z * (-Q - Q_2 / 2 - Q_3 / 3 - Q_4 / 4 - Q_5 / 5);
     I = A - G * S * S / 2 - V * S + Z * S * (Q / 2 + Q_2 / 6 + Q_3 / 12 + Q_4 / 20 + Q_5 / 30);
@@ -209,7 +209,7 @@ void apply_thrust(void)
 // Returns 1 on success, or 0 if input did not contain a number.
 //
 // Calls exit(EXIT_FAILURE) on EOF or other failure to read input.
-int accept_double(double *value)
+static int accept_double(double *value)
 {
     char *buffer = NULL;
     size_t buffer_length = 0;
@@ -240,7 +240,7 @@ int accept_double(double *value)
 // If input starts with none of those characters, prompt again.
 //
 // If unable to read input, calls exit(EXIT_FAILURE);
-int accept_yes_or_no(void)
+static int accept_yes_or_no(void)
 {
     int result = -1;
     do
@@ -283,7 +283,7 @@ int accept_yes_or_no(void)
 // returned buffer.
 //
 // If unable to read input, calls exit(EXIT_FAILURE).
-void accept_line(char **buffer, size_t *buffer_length)
+static void accept_line(char **buffer, size_t *buffer_length)
 {
     fflush(stdout);
     if (getline(buffer, buffer_length, stdin) == -1)
