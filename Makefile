@@ -4,7 +4,7 @@
 # "make clean"           - delete executable and test output files
 # "make build-docker"    - build oldmankris/lunar Docker image
 # "make run-docker"      - run oldmankris/lunar Docker image
-# "make push-docker"     - push oldmankris/lunar Docker image to docker.io
+# "make push-docker"     - build and push multi-arch oldmankris/lunar Docker image
 
 CFLAGS:=-O3 -Wall
 LDLIBS:=-lm
@@ -15,6 +15,7 @@ DOCKER_NAME:=oldmankris/lunar
 DOCKER_TAG:=latest
 
 DOCKER_BUILD_FLAGS:=--no-cache
+DOCKER_PLATFORMS:=linux/amd64,linux/arm64
 
 lunar: lunar.c
 
@@ -49,7 +50,10 @@ run-docker:
 .PHONY: run-docker
 
 push-docker:
-	$(DOCKER) push $(DOCKER_NAME):$(DOCKER_TAG)
+	$(DOCKER) buildx build $(DOCKER_BUILD_FLAGS) \
+		--platform $(DOCKER_PLATFORMS) \
+		-t $(DOCKER_NAME):$(DOCKER_TAG) \
+		--push .
 .PHONY: push-docker
 
 clean:

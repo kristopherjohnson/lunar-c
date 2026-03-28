@@ -1,6 +1,6 @@
 # Creates a Docker image that runs the "lunar" executable
 
-FROM alpine as build
+FROM alpine AS build
 
 # Get packages needed to download and build.
 RUN apk add --no-cache --virtual .build-deps alpine-sdk
