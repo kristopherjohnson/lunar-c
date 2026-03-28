@@ -2,16 +2,13 @@
 
 FROM alpine AS build
 
-# Get packages needed to download and build.
-RUN apk add --no-cache --virtual .build-deps alpine-sdk
+RUN apk add --no-cache gcc musl-dev make
 
-RUN git clone https://github.com/kristopherjohnson/lunar-c.git
+WORKDIR /app
+COPY lunar.c Makefile ./
 
-WORKDIR /lunar-c
+RUN make lunar CFLAGS="-O3 -Wall -static"
 
-RUN make lunar
-
-FROM alpine
-WORKDIR /
-COPY --from=build /lunar-c/lunar /usr/local/bin/lunar
-ENTRYPOINT ["/usr/local/bin/lunar"]
+FROM scratch
+COPY --from=build /app/lunar /lunar
+ENTRYPOINT ["/lunar"]
