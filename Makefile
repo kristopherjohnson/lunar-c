@@ -23,7 +23,7 @@ run: lunar
 	./lunar
 .PHONY: run
 
-test: test_success test_failure test_good
+test: test_success test_failure test_good test_perfect
 .PHONY: test
 
 test_good: lunar
@@ -40,6 +40,11 @@ test_failure: lunar
 	./lunar --echo <test/failure_input.txt >failure_output.txt
 	$(DIFF) test/failure_output_expected.txt failure_output.txt
 .PHONY: test_failure
+
+test_perfect: lunar
+	./lunar --echo <test/perfect_input.txt >perfect_output.txt
+	$(DIFF) test/perfect_output_expected.txt perfect_output.txt
+.PHONY: test_perfect
 
 build-docker:
 	$(DOCKER) build $(DOCKER_BUILD_FLAGS) -t $(DOCKER_NAME):$(DOCKER_TAG) .
@@ -61,4 +66,5 @@ clean:
 	- $(RM) success_output.txt
 	- $(RM) failure_output.txt
 	- $(RM) good_output.txt
+	- $(RM) perfect_output.txt
 .PHONY: clean

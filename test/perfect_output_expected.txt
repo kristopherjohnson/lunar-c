@@ -1,0 +1,41 @@
+CONTROL CALLING LUNAR MODULE. MANUAL CONTROL IS NECESSARY
+YOU MAY RESET FUEL RATE K EACH 10 SECS TO 0 OR ANY VALUE
+BETWEEN 8 & 200 LBS/SEC. YOU'VE 16000 LBS FUEL. ESTIMATED
+FREE FALL IMPACT TIME-120 SECS. CAPSULE WEIGHT-32500 LBS
+
+
+FIRST RADAR CHECK COMING UP
+
+
+COMMENCE LANDING PROCEDURE
+TIME,SECS   ALTITUDE,MILES+FEET   VELOCITY,MPH   FUEL,LBS   FUEL RATE
+      0             120      0        3600.00     16000.0      K=:0
+     10             109   5016        3636.00     16000.0      K=:0
+     20              99   4224        3672.00     16000.0      K=:0
+     30              89   2904        3708.00     16000.0      K=:0
+     40              79   1056        3744.00     16000.0      K=:0
+     50              68   3960        3780.00     16000.0      K=:0
+     60              58   1056        3816.00     16000.0      K=:0
+     70              47   2904        3852.00     16000.0      K=:200
+     80              37   1930        3476.43     14000.0      K=:200
+     90              28   1385        3072.94     12000.0      K=:200
+    100              20   1707        2637.46     10000.0      K=:200
+    110              13   3400        2164.97      8000.0      K=:200
+    120               8   1773        1649.14      6000.0      K=:196
+    130               4   2706        1094.55      4040.0      K=:109
+    140               1   4797         777.21      2950.0      K=:190
+    150               0   3215         147.12      1050.0      K=:11
+    160               0   1091         142.37       940.0      K=:46
+    170               0      4           5.16       480.0      K=:23
+ON THE MOON AT   170.88 SECS
+IMPACT VELOCITY OF     0.61 M.P.H.
+FUEL LEFT:   459.78 LBS
+PERFECT LANDING !-(LUCKY)
+
+
+
+TRY AGAIN?
+(ANS. YES OR NO):NO
+CONTROL OUT
+
+
